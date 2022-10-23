@@ -1,28 +1,11 @@
-import { useState } from "react";
 import Square from "./Square";
 
-const initialBoardState = Array(9).fill(null);
+interface IBoardProps {
+  board: string[];
+  handleSquareClick: (position: number) => void;
+}
 
-const Board = () => {
-  const [board, setBoard] = useState(initialBoardState);
-  const [isXNext, setIsXNext] = useState(false);
-
-  const handleSquareClick = (position: number) => {
-
-    if(board[position]) return;
-
-    setBoard(prevBoard => {
-      return prevBoard.map((square, index) => {
-        if(index === position) {
-          return isXNext ? "X" : "0";
-        }
-        
-        return square;
-      })
-    })
-    setIsXNext(prevIsXNext => !prevIsXNext);
-  };
-
+const Board = ({ board, handleSquareClick }: IBoardProps) => {
   const renderSquare = (position: number) => (
     <Square
       value={board[position]}
