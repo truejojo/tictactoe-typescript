@@ -1,5 +1,4 @@
 import Board from "./components/Board";
-
 import "./styles/index.scss";
 
 const App = () => {

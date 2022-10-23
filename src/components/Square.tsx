@@ -1,11 +1,14 @@
 interface ISquareProps {
   value: string;
+  onClick: () => void;
 }
 
-const Square = ({value}: ISquareProps) => {
+const Square = ({ value, onClick }: ISquareProps) => {
   return (
-    <button type="button" className="square">{value}</button>
-  )
-}
+    <button type="button" className="square" onClick={onClick}>
+      {value}
+    </button>
+  );
+};
 
-export default Square
+export default Square;
