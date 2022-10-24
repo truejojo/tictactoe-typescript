@@ -15,7 +15,7 @@ const History = ({ history, moveTo, currentMove }: IHistoryProps) => {
           <li key={move}>
             <button
               style={{
-                fontWeight: move === currentMove ? "bold" : "normal",
+                fontWeight: move === currentMove ? "900" : "100",
               }}
               type="button"
               onClick={() => moveTo(move)}
