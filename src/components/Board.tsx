@@ -3,15 +3,19 @@ import Square from "./Square";
 interface IBoardProps {
   board: string[];
   handleSquareClick: (position: number) => void;
+  winningSquares: number[];
 }
 
-const Board = ({ board, handleSquareClick }: IBoardProps) => {
-  const renderSquare = (position: number) => (
-    <Square
+const Board = ({ board, handleSquareClick, winningSquares }: IBoardProps) => {
+  const renderSquare = (position: number) => {
+    const isWinnigSquare = winningSquares.includes(position)
+
+    return <Square
       value={board[position]}
       onClick={() => handleSquareClick(position)}
+      isWinnigSquare={isWinnigSquare}
     />
-  );
+  };
 
   return (
     <div className="board">

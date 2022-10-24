@@ -1,4 +1,4 @@
-export function calculateWinner(squares: string[]) {
+const calculateWinner = (squares: string[]) => {
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -9,25 +9,27 @@ export function calculateWinner(squares: string[]) {
     [0, 4, 8],
     [2, 4, 6],
   ];
-  for (let i = 0; i < lines.length; i++) {
-    const [a, b, c] = lines[i];
-    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
-    }
-  }
-  return null;
-}
 //   for (let i = 0; i < lines.length; i++) {
 //     const [a, b, c] = lines[i];
 //     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-//       return {
-//         winner: squares[a],
-//         winningSquares: [a, b, c],
-//       };
+//       return squares[a];
 //     }
 //   }
-//   return {
-//     winner: null,
-//     winningSquares: [],
-//   };
+//   return null;
 // }
+  for (let i = 0; i < lines.length; i++) {
+    const [a, b, c] = lines[i];
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      return {
+        winner: squares[a],
+        winningSquares: [a, b, c],
+      };
+    }
+  }
+  return {
+    winner: null,
+    winningSquares: [],
+  };
+};
+
+export default calculateWinner;
