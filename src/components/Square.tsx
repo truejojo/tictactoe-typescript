@@ -8,9 +8,10 @@ const Square = ({ value, onClick, isWinnigSquare }: ISquareProps) => {
   return (
     <button
       type="button"
-      className="square"
+      className={`square ${isWinnigSquare ? "winning" : ""} ${
+        value === "X" ? "text-green" : "text-orange"
+      }`}
       onClick={onClick}
-      style={{ fontWeight: isWinnigSquare ? "900" : "100" }}
     >
       {value}
     </button>
@@ -18,3 +19,4 @@ const Square = ({ value, onClick, isWinnigSquare }: ISquareProps) => {
 };
 
 export default Square;
+

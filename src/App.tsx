@@ -3,6 +3,7 @@ import Board from "./components/Board";
 import History from "./components/History";
 import StatusMessage from "./components/StatusMessage";
 import calculateWinner from "./utils/helper";
+import "./styles/root.scss";
 import "./styles/index.scss";
 
 const INITIAL_GAME_STATE = [{ board: Array(9).fill(null), isXNext: true }];
@@ -48,17 +49,25 @@ const App = () => {
 
   return (
     <div className="app">
-      <h1>Tic Tac Toe</h1>
+      <h1>
+        Tic <span className="text-green">Tac</span> Toe
+      </h1>
       <StatusMessage winner={winner} current={current} />
       <Board
         board={current.board}
         handleSquareClick={handleSquareClick}
         winningSquares={winningSquares}
       />
-      <button type="button" onClick={onNewGame}>
+      <button
+        type="button"
+        onClick={onNewGame}
+        className={`btn-reset ${winner ? "active" : ""}`}
+      >
         Start new game
       </button>
+      <h2 style={{fontWeight: 'normal'}}>Current game history</h2>
       <History history={history} moveTo={moveTo} currentMove={currentMove} />
+      <div className="bg-balls" />
     </div>
   );
 };
